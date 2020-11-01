@@ -175,7 +175,7 @@ class Frame : public PipelinePayload {
     // gtsam::Point2 px_mismatch  = uncalibrated_px_opencv -
     // uncalibrated_px_gtsam;
     //
-    // if(px_mismatch.vector().norm() > 1){
+    // if(px_mismatch.norm() > 1){
     //  std::cout << "uncalibrated_px: \n" << uncalibrated_px << std::endl;
     //  std::cout << "uncalibrated_px_gtsam: \n" << uncalibrated_px_gtsam <<
     //  std::endl; std::cout << "px_mismatch: \n" << px_mismatch << std::endl;

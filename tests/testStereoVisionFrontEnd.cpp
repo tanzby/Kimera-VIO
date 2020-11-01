@@ -231,7 +231,7 @@ class StereoVisionFrontEndFixture : public ::testing::Test {
   int findPointInVector(const gtsam::Point2& pt_query,
                         const std::vector<gtsam::Point2>& pt_set) {
     for (size_t i = 0u; i < pt_set.size(); i++) {
-      if (pt_set[i].equals(pt_query, 3)) {
+      if (pt_set[i].isApprox(pt_query, 3)) {
         return i;
       }
     }

@@ -236,7 +236,7 @@ TEST(testRegularVio, robotMovingWithConstantVelocity) {
 
       EXPECT_TRUE(assert_equal(poses.at(frame_id).first, W_Pose_Blkf, tol));
       EXPECT_LT((W_Vel_Blkf - v).norm(), tol);
-      EXPECT_LT((imu_bias_lkf - imu_bias).vector().norm(), tol);
+      EXPECT_LT((imu_bias_lkf - imu_bias).norm(), tol);
     }
   }
 }
@@ -377,7 +377,7 @@ TEST(testRegularVio, robotMovingWithConstantVelocitySmartAndProjFactor) {
       ASSERT_TRUE(
           gtsam::assert_equal(poses.at(frame_id).first, W_Pose_Blkf, tol));
       ASSERT_LT((W_Vel_Blkf - v).norm(), tol);
-      ASSERT_LT((imu_bias_lkf - imu_bias).vector().norm(), tol);
+      ASSERT_LT((imu_bias_lkf - imu_bias).norm(), tol);
     }
   }
 }
