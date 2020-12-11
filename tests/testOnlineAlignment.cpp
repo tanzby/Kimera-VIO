@@ -276,7 +276,7 @@ TEST_F(OnlineAlignmentFixture, DISABLED_OnlineGravityAlignment) {
   gtsam::Vector3 real_body_grav(init_navstate_.pose_.rotation().transpose() *
                                 n_gravity);
   gtsam::Pose3 real_init_pose(init_navstate_.pose_.rotation(),
-                              gtsam::Vector3());
+                              Point3::Zero());
   LOG(INFO) << real_body_grav << " vs. " << g_iter;
   EXPECT_NEAR(n_gravity.norm(), g_iter.norm(), tol_OGA);
   EXPECT_NEAR(real_body_grav.x(), g_iter.x(), tol_OGA);
@@ -322,7 +322,7 @@ TEST_F(OnlineAlignmentFixture, DISABLED_GravityAlignmentRealData) {
     gtsam::Vector3 real_body_grav(init_navstate_.pose_.rotation().transpose() *
                                   n_gravity);
     gtsam::Pose3 real_init_pose(init_navstate_.pose_.rotation(),
-                                gtsam::Vector3());
+                                Point3::Zero());
 
     LOG(INFO) << real_body_grav << " vs. " << g_iter;
     EXPECT_NEAR(n_gravity.norm(), g_iter.norm(), tol_RD_gv);

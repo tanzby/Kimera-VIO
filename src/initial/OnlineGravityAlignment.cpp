@@ -139,7 +139,7 @@ bool OnlineGravityAlignment::alignVisualInertialEstimates(
     // Align gravity vectors and estimate initial pose
     gtsam::Rot3 w0_R_b0 =
         UtilsOpenCV::AlignGravityVectors(*g_iter, g_world_, false);
-    gtsam::Pose3 w0_T_b0(w0_R_b0, gtsam::Point3());
+    gtsam::Pose3 w0_T_b0(w0_R_b0, Point3::Zero());
     // Create initial navstate and rotate velocity in world frame
     *init_navstate = gtsam::NavState(w0_T_b0 * vi_frames.at(0).b0Tbk(),
                                      w0_T_b0.rotation() * init_velocity);
@@ -306,7 +306,8 @@ void OnlineGravityAlignment::estimateGyroscopeBiasAHRS(
   gtsam::Values initial;
   gtsam::NonlinearFactorGraph nfg;
   // Add gyroscope bias initial value
-  initial.insert(gtsam::Symbol('b', 0), gtsam::Vector3());
+  Vector3 init_bias = Vector3::Zero();
+  initial.insert(gtsam::Symbol('b', 0), init_bias);
 
   // Create noise model (Gaussian) in body frame
   Matrix3 B_Rot_W = vi_frames.at(0).b0Rbk().transpose();

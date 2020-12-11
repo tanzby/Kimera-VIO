@@ -681,15 +681,15 @@ void StereoFrame::computeRectificationParameters(
   const gtsam::Rot3& camL_Rot_camLrect =
       UtilsOpenCV::cvMatToGtsamRot3(left_camera_info.R_rectify_).inverse();
   //! Fix camL position to camLrect.
-  //! aka use gtsam::Point3()
-  gtsam::Pose3 camL_Pose_camLrect(camL_Rot_camLrect, gtsam::Point3::Zero());
+  //! aka use Point3::Zero()
+  gtsam::Pose3 camL_Pose_camLrect(camL_Rot_camLrect, Point3::Zero());
   *B_Pose_camLrect =
       left_camera_info.body_Pose_cam_.compose(camL_Pose_camLrect);
 
   // right camera pose after rectification
   const gtsam::Rot3& camR_Rot_camRrect =
       UtilsOpenCV::cvMatToGtsamRot3(right_camera_info.R_rectify_).inverse();
-  gtsam::Pose3 camR_Pose_camRrect(camR_Rot_camRrect, gtsam::Point3());
+  gtsam::Pose3 camR_Pose_camRrect(camR_Rot_camRrect,  Point3::Zero());
   gtsam::Pose3 B_Pose_camRrect =
       (right_camera_info.body_Pose_cam_).compose(camR_Pose_camRrect);
 

@@ -133,7 +133,7 @@ bool InitializationBackEnd::bundleAdjustmentAndGravityAlignment(
             gtNavState(init_navstate_pass.pose(),
               init_navstate_pass.pose().rotation().transpose() *
                 init_navstate_pass.velocity(),
-              gtsam::imuBias::ConstantBias(gtsam::Vector3(),
+              gtsam::imuBias::ConstantBias(Point3::Zero(),
                                           gyro_bias_pass)),
             gravity_iter_pass),
             ba_duration,
